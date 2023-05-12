@@ -33,5 +33,33 @@ async function getAllStations() {
     }
   }
 
+  async function readMay() {
+    try {
+      const res = await pool.query(`SELECT dep_station_name, ret_station_name, covered_distance, duration FROM may`);
+      return res.rows;
+    } catch (err) {
+      console.log(err?.stack);
+    }
+  }
 
-  module.exports ={getAllStations, getOneStation}
+  async function readJune() {
+    try {
+      const res = await pool.query(`SELECT dep_station_name, ret_station_name, covered_distance, duration FROM june`);
+      return res.rows;
+    } catch (err) {
+      console.log(err?.stack);
+    }
+  }
+
+  async function readJuly() {
+    try {
+      const res = await pool.query(`SELECT dep_station_name, ret_station_name, covered_distance, duration FROM july`);
+      return res.rows;
+    } catch (err) {
+      console.log(err?.stack);
+    }
+  }
+
+
+
+  module.exports ={getAllStations, getOneStation, readMay, readJune, readJuly}
