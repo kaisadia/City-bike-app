@@ -4,11 +4,12 @@ import Stations from './components/Stations';
 
 function App() {
 const [stations, setStations] = useState([])
+const [flipped, setFlipped] = useState(true)
 
 
   return (
-    <div className="App">
-      <Stations stations={stations} setStations={setStations}/>
+    <div>
+      <Stations stations={stations} setStations={setStations} flipped={flipped} setFlipped={setFlipped}/>
     </div>
   );
 }
