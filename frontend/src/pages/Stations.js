@@ -1,11 +1,12 @@
 import React from 'react';
 import { useEffect } from 'react';
-import Card from './Card';
+import Card from '../components/Card';
 import { useState } from 'react';
-import FilterStations from './FilterStations';
+import FilterStations from '../components/FilterStations';
 
-const Stations = ({stations, setStations, flipped, setFlipped}) => {
+const Stations = ({flipped, setFlipped}) => {
 const [filtered, setFiltered] = useState('')
+const [stations, setStations] = useState([])
     
     const fetchStations = () => {
         fetch("http://localhost:4000/stations")

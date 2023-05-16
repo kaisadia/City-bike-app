@@ -16,7 +16,6 @@ const pool = new Pool({
 async function getAllStations() {
     try {
       const res = await pool.query(`SELECT * FROM stations`);
-      console.log("OK:", res.rows[0]);
       return res.rows;
     } catch (err) {
       console.log(err?.stack);
