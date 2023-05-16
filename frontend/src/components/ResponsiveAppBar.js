@@ -11,7 +11,7 @@ import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import { useState } from 'react';
 
 
-const pages = ['homepage', 'stations', 'trips'];
+const pages = ['stations', 'trips'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);

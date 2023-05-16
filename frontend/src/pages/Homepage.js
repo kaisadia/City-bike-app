@@ -1,8 +1,9 @@
 import React from 'react';
+import HeaderImg from '../components/HeaderImg';
 
 function Homepage() {
     return (
-        <h1>this is the homepage</h1>
+        <HeaderImg />
     );
 }
 
