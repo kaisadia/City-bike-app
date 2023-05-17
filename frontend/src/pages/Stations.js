@@ -52,9 +52,8 @@ const [page, setPage] = useState(1);
 
     return (
         <div>
-        <div >
-        <Filter setFiltered={setFiltered} text='Search for a station'/>
-        </div>
+        <Filter setFiltered={setFiltered} text='Search for a station'/> 
+        <div>
         <div className='grid'> 
        {showStations.map((station) => {
         return <Card key={station.id} paginated={station} flipped={flipped} 
@@ -62,7 +61,7 @@ const [page, setPage] = useState(1);
       })}
 
         </div>
-
+        </div>
         <Pagination
         count={(stations.length/20).toFixed(0)}
         color="primary"

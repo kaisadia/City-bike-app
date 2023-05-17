@@ -47,15 +47,27 @@ async function paginateStations(page, size) {
     }
   }
 
-  async function readTrips() {
+  async function paginatedTrips(page, size) {
     try {
-      const res = await pool.query(`SELECT * FROM may`)
+      const res = await pool.query(`SELECT dep_time, 
+      ret_time, 
+      dep_station_name, 
+      ret_station_name,
+      covered_distance,
+      duration
+        FROM may
+        ORDER BY id
+        LIMIT $2
+        OFFSET (($1 - 1) * $2)`,
+        [page, size])
       return res.rows;
     } catch (err) {
       console.log(err?.stack);
     }
   }
 
-
-
-  module.exports ={getAllStations, getOneStation, readTrips, paginateStations}
+  module.exports ={
+    getAllStations, 
+    getOneStation, 
+    paginateStations,
+    paginatedTrips}
