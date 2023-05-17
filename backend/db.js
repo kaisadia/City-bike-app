@@ -13,10 +13,25 @@ const pool = new Pool({
     return parseFloat(val);
   });
 
-async function getAllStations() {
+  
+  async function getAllStations() {
     try {
-      const res = await pool.query(`SELECT * FROM stations`);
-      return res.rows;
+      const res = await pool.query(`SELECT * FROM stations ORDER BY id`)
+      return res.rows
+    } catch (err) {
+      console.log(err?.stack);
+    }
+  }
+
+async function paginateStations(page, size) {
+    try {
+      const res = await pool.query(`SELECT *
+        FROM stations
+        ORDER BY id
+        LIMIT $2
+        OFFSET (($1 - 1) * $2)`,
+        [page, size])
+      return res.rows
     } catch (err) {
       console.log(err?.stack);
     }
@@ -32,27 +47,9 @@ async function getAllStations() {
     }
   }
 
-  async function readMay() {
+  async function readTrips() {
     try {
-      const res = await pool.query(`SELECT dep_station_name, ret_station_name, covered_distance, duration FROM may`);
-      return res.rows;
-    } catch (err) {
-      console.log(err?.stack);
-    }
-  }
-
-  async function readJune() {
-    try {
-      const res = await pool.query(`SELECT dep_station_name, ret_station_name, covered_distance, duration FROM june`);
-      return res.rows;
-    } catch (err) {
-      console.log(err?.stack);
-    }
-  }
-
-  async function readJuly() {
-    try {
-      const res = await pool.query(`SELECT dep_station_name, ret_station_name, covered_distance, duration FROM july`);
+      const res = await pool.query(`SELECT * FROM may`)
       return res.rows;
     } catch (err) {
       console.log(err?.stack);
@@ -61,4 +58,4 @@ async function getAllStations() {
 
 
 
-  module.exports ={getAllStations, getOneStation, readMay, readJune, readJuly}
+  module.exports ={getAllStations, getOneStation, readTrips, paginateStations}

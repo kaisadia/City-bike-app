@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
-const { getAllStations, getOneStation, readMay, readJune, readJuly } = require("./db");
+const { getAllStations, getOneStation, paginateStations, readTrips } = require("./db");
 
 const port = 4000
 app.use(cors())
@@ -11,8 +11,15 @@ app.get("/", async (req, res) => {
     res.sendStatus(200)
   })
 
-app.get("/stations", async (req, res) => {
+  app.get("/allstations", async (req, res) => {
     const bikes = await getAllStations();
+    res.send(bikes);
+  });
+
+app.get("/stations", async (req, res) => {
+    const page = parseInt(req.query.page) || 1
+    const size = parseInt(req.query.size) || 20
+    const bikes = await paginateStations(page, size);
     res.send(bikes);
   });
 
@@ -21,19 +28,9 @@ app.get("/stations/:id", async (req, res) => {
     res.json(await getOneStation(station_id))
   });
 
-app.get("/may", async (req, res) => {
-    const may = await readMay();
-    res.send(may);
-  });
-
-app.get("/june", async (req, res) => {
-    const june = await readJune();
-    res.send(june);
-  });
-
-  app.get("/july", async (req, res) => {
-    const july = await readJuly();
-    res.send(july);
+app.get("/trips", async (req, res) => {
+    const trips = await readTrips();
+    res.send(trips);
   });
 
 

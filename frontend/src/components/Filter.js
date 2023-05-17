@@ -1,17 +1,17 @@
 import React from 'react'
 
-const FilterStations = ({setFiltered})=> {
+const Filter = ({setFiltered, text})=> {
 
   return (
-    <div>
+    <div className='filter'>
         <input className='bar' id="outlined-basic"
           variant="outlined"
           fullWidth
           type='text'
           label="Search" onChange={(e) => {setFiltered(e.target.value); console.log(e.target.value)}} 
-          placeholder='Search for a station' />
+          placeholder={text} />
     </div>
   )
 }
 
-export default FilterStations
+export default Filter

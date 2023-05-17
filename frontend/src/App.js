@@ -12,7 +12,7 @@ import NoPage from "./pages/NoPage";
 
 
 export default function App() {
-const [stations, setStations] = useState([])
+
 
 /*
   return (
