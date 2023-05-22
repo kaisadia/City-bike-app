@@ -9,13 +9,20 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Autocomplete from '@mui/base/useAutocomplete';
+import TextField from '@mui/material/TextField';
 
-const Trips = () => {
+
+
+const Trips = ({stations}) => {
 const [trips, setTrips] = useState([])
 const [page, setPage] = useState(1);
+const [size, setSize] = useState(100);
+const [filtered, setFiltered] = useState('')
+
 
   const fetchTrips = () => {
-      fetch(`http://localhost:4000/trips?page=${page}&size=100`)
+      fetch(`http://localhost:4000/trips?page=${page}&size=${size}`)
       .then((response) => {
         return response.json();
         })
@@ -28,10 +35,19 @@ const [page, setPage] = useState(1);
 }, [page])
 
 
+const filteredTrips = filtered !== ''? 
+    trips.filter(trip => 
+    trip.dep_station_name.toLowerCase().includes(filtered.toLowerCase()))
+    :
+    trips
+    
+       
 
     return (
     <div >
-      <Filter text='Search for a trip' /> 
+      <div className='filter-box'>
+      <Filter setFiltered={setFiltered} text='Search for a departure station' /> 
+      </div>
 <TableContainer component={Paper} >
       <Table sx={{ minWidth: 450 }} aria-label="simple table">
         <TableHead>
@@ -44,7 +60,7 @@ const [page, setPage] = useState(1);
           </TableRow>
         </TableHead>
         <TableBody>
-          {trips.map((row) => (
+          {filteredTrips.map((row) => (
             <TableRow
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

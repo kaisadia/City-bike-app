@@ -1,8 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
-const { getAllStations, getOneStation, paginateStations,
-paginatedTrips } = require("./db");
+const { paginateStations,paginatedTrips } = require("./db");
 
 const port = 4000
 app.use(cors())
@@ -12,17 +11,19 @@ app.get("/", async (req, res) => {
     res.sendStatus(200)
   })
 
-  app.get("/allstations", async (req, res) => {
-    const bikes = await getAllStations();
-    res.send(bikes);
-  });
 
 app.get("/stations", async (req, res) => {
     const page = parseInt(req.query.page) || 1
-    const size = parseInt(req.query.size) 
-    const bikes = await paginateStations(page, size);
-    res.send(bikes);
-  });
+    const size = parseInt(req.query.size) || 20
+    const search = req.query.search || "";
+    res.json(await paginateStations(page,size, search))
+ 
+  })
+    
+
+
+
+
 
 app.get("/trips", async (req, res) => {
     const page = parseInt(req.query.page) || 1

@@ -13,35 +13,18 @@ const pool = new Pool({
     return parseFloat(val);
   });
 
-  
-  async function getAllStations() {
-    try {
-      const res = await pool.query(`SELECT * FROM stations ORDER BY id`)
-      return res.rows
-    } catch (err) {
-      console.log(err?.stack);
-    }
-  }
 
-async function paginateStations(page, size) {
+
+async function paginateStations(page, size, search) {
     try {
       const res = await pool.query(`SELECT *
         FROM stations
+        WHERE station_name LIKE $3
         ORDER BY id
         LIMIT $2
         OFFSET (($1 - 1) * $2)`,
-        [page, size])
+        [page, size,`%${search}%`])
       return res.rows
-    } catch (err) {
-      console.log(err?.stack);
-    }
-  }
-
-  async function getOneStation(station_id) {
-    try {
-      const res = await pool.query(`SELECT * FROM stations WHERE station_id=$1`, 
-      [station_id]);
-      return res.rows;
     } catch (err) {
       console.log(err?.stack);
     }
@@ -67,7 +50,5 @@ async function paginateStations(page, size) {
   }
 
   module.exports ={
-    getAllStations, 
-    getOneStation, 
     paginateStations,
     paginatedTrips}

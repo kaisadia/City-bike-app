@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Filter = ({setFiltered, text})=> {
+const Filter = ({setSearch, text, search})=> {
 
   return (
     <div className='filter'>
@@ -8,7 +8,8 @@ const Filter = ({setFiltered, text})=> {
           variant="outlined"
           fullWidth
           type='text'
-          label="Search" onChange={(e) => {setFiltered(e.target.value); console.log(e.target.value)}} 
+          label="Search" onChange={(e) => {setSearch(e.target.value); console.log(e.target.value)}} 
+          value={search}
           placeholder={text} />
     </div>
   )
