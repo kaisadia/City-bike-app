@@ -21,16 +21,13 @@ app.get("/stations", async (req, res) => {
   })
     
 
-
-
-
-
 app.get("/trips", async (req, res) => {
     const page = parseInt(req.query.page) || 1
-    const size = parseInt(req.query.size) 
-    const trips = await paginatedTrips(page, size);
-    res.send(trips);
-  });
+    const size = parseInt(req.query.size) || 100
+    const dep = req.query.dep || "";
+    const ret = req.query.ret || "";
+    res.json(await paginatedTrips(page, size, dep, ret))
+})
 
 
 

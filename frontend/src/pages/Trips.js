@@ -11,6 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Autocomplete from '@mui/base/useAutocomplete';
 import TextField from '@mui/material/TextField';
+import { Search } from '@mui/icons-material';
 
 
 
@@ -18,11 +19,11 @@ const Trips = ({stations}) => {
 const [trips, setTrips] = useState([])
 const [page, setPage] = useState(1);
 const [size, setSize] = useState(100);
-const [filtered, setFiltered] = useState('')
-
+const [dep, setDep] = useState('')
+const [ret, setRet] = useState('')
 
   const fetchTrips = () => {
-      fetch(`http://localhost:4000/trips?page=${page}&size=${size}`)
+      fetch(`http://localhost:4000/trips?page=${page}&size=${size}&dep=${dep}&ret=${ret}`)
       .then((response) => {
         return response.json();
         })
@@ -32,21 +33,14 @@ const [filtered, setFiltered] = useState('')
   };
   useEffect(() => {
     fetchTrips();
-}, [page])
-
-
-const filteredTrips = filtered !== ''? 
-    trips.filter(trip => 
-    trip.dep_station_name.toLowerCase().includes(filtered.toLowerCase()))
-    :
-    trips
-    
-       
+}, [page, dep, ret])
+ 
 
     return (
     <div >
       <div className='filter-box'>
-      <Filter setFiltered={setFiltered} text='Search for a departure station' /> 
+      <Filter setSearch={setDep} text='Search for a departure station' /> 
+      <Filter setSearch={setRet} text='Search for a return station' /> 
       </div>
 <TableContainer component={Paper} >
       <Table sx={{ minWidth: 450 }} aria-label="simple table">
@@ -60,7 +54,7 @@ const filteredTrips = filtered !== ''?
           </TableRow>
         </TableHead>
         <TableBody>
-          {filteredTrips.map((row) => (
+          {trips.map((row) => (
             <TableRow
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -86,14 +80,6 @@ const filteredTrips = filtered !== ''?
     </div>
   );
 }
-
-
-
-
-
-
-
-
 
 
 export default Trips
