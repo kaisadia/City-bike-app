@@ -1,4 +1,6 @@
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
+import './map.css'
+
 
 
 export default function Map({center}) {
@@ -9,7 +11,7 @@ export default function Map({center}) {
   if (!isLoaded) return <div>Loading...</div>;
 
   return (
-    <GoogleMap zoom={10} center={center} mapContainerClassName="map-container">
+    <GoogleMap zoom={11} center={center} mapContainerClassName="map-container">
       <MarkerF position={center} />
     </GoogleMap>
   );

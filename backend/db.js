@@ -49,18 +49,12 @@ async function paginateStations(page, size, search) {
 
   async function paginatedTrips(page, size, dep, ret, date) {
     try {
-      const res = await pool.query(`SELECT dep_time AS date,
-      dep_station_name,
-      ret_station_name,
-      covered_distance,
-      duration
-        FROM may
-        WHERE dep_station_name LIKE $3
-        AND ret_station_name LIKE $4
-        AND dep_time LIKE $5
-        ORDER BY id
-        LIMIT $2
-        OFFSET (($1 - 1) * $2)`,
+      const res = await pool.query(`SELECT dep_time AS date, dep_station_name, ret_station_name, covered_distance, duration,
+      (SELECT COUNT(*) FROM may AS total_rows)
+      FROM may
+      WHERE dep_station_name LIKE $3 AND ret_station_name LIKE $4 AND dep_time LIKE $5
+      ORDER BY id
+      LIMIT $2 OFFSET (($1 - 1) * $2)`,
         [page, size,`%${dep}%`,`%${ret}%`, `%${date}%`])
       return res.rows;
     } catch (err) {

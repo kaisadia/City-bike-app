@@ -4,7 +4,8 @@ import Card from '../components/Card';
 import { useState } from 'react';
 import Filter from '../components/Filter';
 import { Pagination } from "@mui/material";
-import Map from '../components/Map';
+import './stations.css'
+
 
 const Stations = ({flipped, setFlipped}) => {
 const [paginated, setPaginated] = useState([])
@@ -13,7 +14,7 @@ const [search, setSearch] = useState('')
 
     
     const fetchPaginatedStations = () => {
-        fetch(`http://localhost:4000/stations?page=${page}&size=20&search=${search}`)
+        fetch(`http://localhost:4000/stations?page=${page}&size=18&search=${search}`)
             .then((response) => {
             return response.json();
             })
@@ -27,8 +28,9 @@ const [search, setSearch] = useState('')
             }, [page, search])
 
     return (
-        <div>
+        <div >
         <Filter setSearch={setSearch} text='Search for a station'/> 
+        <p className='infotext'>Click on a station to get more information</p>
         <div>
         <div className='grid'> 
        {paginated.map((station) => {
@@ -41,14 +43,16 @@ const [search, setSearch] = useState('')
       })}
 
         </div>
-</div>
+</div >
+<div className='pagination'>
         <Pagination
         count={23}
-        color="primary"
+        color='standard'
         onChange={(event, value) => setPage(value)}
         page={page}
         
       />
+      </div>
         </div>
     );
 };

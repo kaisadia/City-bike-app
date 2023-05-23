@@ -1,0 +1,46 @@
+.background {
+    background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/93e09053817167.59421b7366d44.gif);
+    background-repeat: repeat;
+    background-position: center;
+    height: 900px;
+    text-align: center;
+
+}
+
+.textbox {
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 35%;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.textbox-text {
+    color:white;
+    font-size: 20px;
+    font-weight: 200;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.frontpage-header { 
+        display: flex;
+        flex: 1;
+        color: white;
+        font-size: 35px;
+        font-weight: bold;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        padding-top: 10px;
+        text-shadow: 2px 2px 4px #b0afaf;
+}
+

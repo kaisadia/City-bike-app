@@ -9,11 +9,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Autocomplete from '@mui/base/useAutocomplete';
-import TextField from '@mui/material/TextField';
-import { Search } from '@mui/icons-material';
-
-
+import './trips.css'
+import './stations.css'
 
 
 const Trips = ({stations}) => {
@@ -39,21 +36,23 @@ const [date, setDate] = useState('')
  
 
     return (
-    <div >
+    <div className='container'>
+      <p className='searchtext'>Search for journeys</p>
+      <div className='triptext'>There are (why not working?) bike journeys </div>
       <div className='filter-box'>
-      <Filter setSearch={setDep} text='Search for a departure station' /> 
-      <Filter setSearch={setRet} text='Search for a return station' /> 
-      <Filter setSearch={setDate} text='Search for a date dd/mm/yyy' /> 
+      <Filter setSearch={setDep} text='Enter departure station' /> 
+      <Filter setSearch={setRet} text='Enter a return station' /> 
+      <Filter setSearch={setDate} text='Enter date dd/mm/yyy' /> 
       </div>
 <TableContainer component={Paper} >
       <Table sx={{ minWidth: 450 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell align="right">Departure station</TableCell>
-            <TableCell align="right">Return station</TableCell>
-            <TableCell align="right">Distance (km)</TableCell>
-            <TableCell align="right">Duration (min)</TableCell>
+            <TableCell><p className='headertext'>Date</p></TableCell>
+            <TableCell align="right"><p className='headertext'>Departure station</p></TableCell>
+            <TableCell align="right"><p className='headertext'>Return station</p></TableCell>
+            <TableCell align="right"><p className='headertext'>Distance (km)</p></TableCell>
+            <TableCell align="right"><p className='headertext'>Duration (min)</p></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -73,13 +72,13 @@ const [date, setDate] = useState('')
           ))}
         </TableBody>
       </Table>
-      <Pagination
+    </TableContainer>
+    <Pagination className='pagination'
         count={10000}
-        color="primary"
+        color='standard'
         onChange={(event, value) => setPage(value)}
         page={page}
       />
-    </TableContainer>
     </div>
   );
 }
