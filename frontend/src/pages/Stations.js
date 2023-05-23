@@ -4,6 +4,7 @@ import Card from '../components/Card';
 import { useState } from 'react';
 import Filter from '../components/Filter';
 import { Pagination } from "@mui/material";
+import Map from '../components/Map';
 
 const Stations = ({flipped, setFlipped}) => {
 const [paginated, setPaginated] = useState([])
@@ -31,8 +32,12 @@ const [search, setSearch] = useState('')
         <div>
         <div className='grid'> 
        {paginated.map((station) => {
-        return <Card key={station.id} paginated={station} flipped={flipped} 
-        setFlipped={setFlipped}></Card>
+        return (
+        <div>
+        <Card key={station.id} paginated={station} flipped={flipped} 
+        setFlipped={setFlipped} ></Card>
+        </div>
+        )
       })}
 
         </div>
