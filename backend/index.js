@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
-const { paginateStations,paginatedTrips } = require("./db");
+const { paginateStations,paginatedTrips, countTrips } = require("./db");
 
 const port = 4000
 app.use(cors())
@@ -26,14 +26,15 @@ app.get("/trips", async (req, res) => {
     const size = parseInt(req.query.size) || 100
     const dep = req.query.dep || "";
     const ret = req.query.ret || "";
-    res.json(await paginatedTrips(page, size, dep, ret))
+    const date = req.query.date || "";
+    res.json(await paginatedTrips(page, size, dep, ret, date))
 })
 
 
 
 app.get("/stations/:id", async (req, res) => {
-    const station_id = req.params.id;
-    res.json(await getOneStation(station_id))
+    const id = req.params.id
+    res.json(await countTrips(id))
   });
 
 

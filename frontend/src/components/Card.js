@@ -9,8 +9,14 @@ const Card = ({paginated}) => {
     return (
     
     <div className='card-container'>
-        {flipped && <p onClick={clickHandler} className='front'>{paginated.station_name}</p>}  
-        {!flipped && <p onClick={clickHandler} className='back'>{paginated.address} </p>} 
+        {flipped && <div onClick={clickHandler} className='front'> <p>{paginated.station_name}</p>
+        <p>{paginated.address}</p>
+        </div>
+        }  
+        {!flipped && <div onClick={clickHandler} className='back'>  
+        <p>Total trips to: {paginated.dep_station_count}</p>
+        <p>Total trips from: {paginated.ret_station_count}</p>
+        </div>} 
 </div>
     );
 };

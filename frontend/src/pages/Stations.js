@@ -25,7 +25,6 @@ const [search, setSearch] = useState('')
                 fetchPaginatedStations();
             }, [page, search])
 
-
     return (
         <div>
         <Filter setSearch={setSearch} text='Search for a station'/> 
@@ -33,7 +32,7 @@ const [search, setSearch] = useState('')
         <div className='grid'> 
        {paginated.map((station) => {
         return <Card key={station.id} paginated={station} flipped={flipped} 
-        setFlipped={setFlipped} ></Card>
+        setFlipped={setFlipped}></Card>
       })}
 
         </div>

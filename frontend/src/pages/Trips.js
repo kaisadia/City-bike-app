@@ -15,15 +15,17 @@ import { Search } from '@mui/icons-material';
 
 
 
+
 const Trips = ({stations}) => {
 const [trips, setTrips] = useState([])
 const [page, setPage] = useState(1);
 const [size, setSize] = useState(100);
 const [dep, setDep] = useState('')
 const [ret, setRet] = useState('')
+const [date, setDate] = useState('')
 
   const fetchTrips = () => {
-      fetch(`http://localhost:4000/trips?page=${page}&size=${size}&dep=${dep}&ret=${ret}`)
+      fetch(`http://localhost:4000/trips?page=${page}&size=${size}&dep=${dep}&ret=${ret}&date=${date}`)
       .then((response) => {
         return response.json();
         })
@@ -33,7 +35,7 @@ const [ret, setRet] = useState('')
   };
   useEffect(() => {
     fetchTrips();
-}, [page, dep, ret])
+}, [page, dep, ret, date])
  
 
     return (
@@ -41,6 +43,7 @@ const [ret, setRet] = useState('')
       <div className='filter-box'>
       <Filter setSearch={setDep} text='Search for a departure station' /> 
       <Filter setSearch={setRet} text='Search for a return station' /> 
+      <Filter setSearch={setDate} text='Search for a date dd/mm/yyy' /> 
       </div>
 <TableContainer component={Paper} >
       <Table sx={{ minWidth: 450 }} aria-label="simple table">
@@ -60,7 +63,7 @@ const [ret, setRet] = useState('')
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.dep_time.slice(0, 10).split('-').reverse().join('/')}
+                {row.date.slice(0, 10).split('-').reverse().join('/')}
               </TableCell>
               <TableCell align="right">{row.dep_station_name}</TableCell>
               <TableCell align="right">{row.ret_station_name}</TableCell>
