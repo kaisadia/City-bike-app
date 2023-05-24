@@ -6,25 +6,12 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
-import { useState } from 'react';
-
 
 const pages = ['stations', 'trips'];
 
-const ResponsiveAppBar = () => {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-
+function ResponsiveAppBar() {
   return (
-    <AppBar position="static" style={{ background: '#FCA510' }} >
+    <AppBar position="static" style={{ background: '#FCA510' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <DirectionsBikeIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -46,26 +33,23 @@ const ResponsiveAppBar = () => {
             Hel Bike App
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-          </Box>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} />
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-            <Button
+              <Button
                 href={page}
                 key={page}
-                onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
               </Button>
             ))}
           </Box>
-          
+
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
 
-
-export default ResponsiveAppBar
+export default ResponsiveAppBar;

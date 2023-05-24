@@ -47,3 +47,15 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 18px
   }
+  .button {
+    color:whitesmoke;
+    font-weight: 500;
+    background-color: #FCA510;
+    border-color: #FCA510;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-style: solid;
+    
+
+  }

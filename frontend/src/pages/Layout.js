@@ -1,14 +1,14 @@
-import React from "react";
-import {Outlet} from "react-router-dom";
-import ResponsiveAppBar from "../components/ResponsiveAppBar";
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import ResponsiveAppBar from '../components/ResponsiveAppBar';
 
-const Layout = () => {
+function Layout() {
   return (
     <>
       <ResponsiveAppBar />
       <Outlet />
     </>
   );
-};
+}
 
 export default Layout;
