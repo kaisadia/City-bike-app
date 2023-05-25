@@ -10,7 +10,7 @@ function Stations({ flipped, setFlipped }) {
   const [search, setSearch] = useState('');
 
   const fetchPaginatedStations = () => {
-    fetch(`http://localhost:4000/stations?page=${page}&size=18&search=${search}`)
+    fetch(`http://citybikes.us-east-1.elasticbeanstalk.com/stations?page=${page}&size=18&search=${search}`)
       .then((response) => response.json())
       .then((data) => {
         setPaginated(data);

@@ -19,7 +19,7 @@ function Trips() {
   const [date, setDate] = useState('');
 
   const fetchTrips = () => {
-    fetch(`http://localhost:4000/trips?page=${page}&size=100&dep=${dep}&ret=${ret}&date=${date}`)
+    fetch(`http://citybikes.us-east-1.elasticbeanstalk.com/trips?page=${page}&size=100&dep=${dep}&ret=${ret}&date=${date}`)
       .then((response) => response.json())
       .then((data) => {
         setTrips(data);
