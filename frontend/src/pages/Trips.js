@@ -19,7 +19,7 @@ function Trips() {
   const [date, setDate] = useState('');
 
   const fetchTrips = () => {
-    fetch(`http://citybikes.us-east-1.elasticbeanstalk.com/trips?page=${page}&size=100&dep=${dep}&ret=${ret}&date=${date}`)
+    fetch(`http://localhost:8080/trips?page=${page}&size=100&dep=${dep}&ret=${ret}&date=${date}`)
       .then((response) => response.json())
       .then((data) => {
         setTrips(data);
@@ -32,7 +32,7 @@ function Trips() {
   return (
     <div className="container">
       <p className="searchtext">Search for journeys</p>
-      <div className="triptext">There are (why not working?) bike journeys </div>
+      <div className="triptext">There are over 1.5 million bike journeys </div>
       <div className="filter-box">
         <Filter setSearch={setDep} text="Enter departure station" />
         <Filter setSearch={setRet} text="Enter a return station" />
@@ -56,7 +56,7 @@ function Trips() {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.date.slice(0, 10).split('-').reverse().join('/')}
+                  {row.date}
                 </TableCell>
                 <TableCell align="right">{row.dep_station_name}</TableCell>
                 <TableCell align="right">{row.ret_station_name}</TableCell>

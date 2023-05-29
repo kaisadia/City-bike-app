@@ -30,7 +30,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint ."
   },
-  "proxy": "http://citybikes.us-east-1.elasticbeanstalk.com/",
+  "proxy": "http://localhost:8080",
   "eslintConfig": {
     "extends": [
       "react-app",

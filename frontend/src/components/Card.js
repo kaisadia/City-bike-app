@@ -6,15 +6,12 @@ function Card({ paginated }) {
   const [flipped, setFlipped] = useState(true);
 
   const clickHandler = () => { setFlipped(!flipped); };
-
   const center = useMemo(() => ({ lat: paginated.y, lng: paginated.x }), []);
-
   return (
 
     <div className="card-container">
       {flipped && (
         <div className="front">
-
           <p className="station">{paginated.station_name}</p>
           <p className="address">{paginated.address}</p>
           <button className="button" type="button" onClick={clickHandler}>More</button>
@@ -22,7 +19,6 @@ function Card({ paginated }) {
       )}
       {!flipped && (
         <div className="back">
-
           <p>
             Total trips to the station:
             <p className="number">{paginated.dep_station_count}</p>
