@@ -13,7 +13,7 @@ The backend is done using Node, Express and Javascript and the frontend is done 
 
 ## Cloud hosted app
 
-Here is a link to the cloud hosted application:  LINK
+[Here](http://citybike-app.s3-website-us-east-1.amazonaws.com) is a link to the cloud hosted application. 
 
 The app is hosted on Amazon Web Services. The backend is on AWS Elastic Beanstalk. AWS Elastic Beanstalk is a service that makes it easy to deploy and manage web applications in the Amazon Web Services (AWS) cloud. It automates the details of capacity provisioning, load balancing, auto-scaling, and application deployment, creating an environment that runs a version of your application. 
 The frontend of the application is stored in AWS S3 bucket. S3 is good for hosting frontends because it offers scalable and secure storage for static websites. 
@@ -98,7 +98,7 @@ To run the backend in Docker
     - Total trips to and from
     - Average distance from and to station
     - Zoomable location on map 
-    - 
+    
 <img width="902" alt="image" src="https://github.com/kaisadia/City-bike-app/assets/122431979/3683dd91-355e-4920-8ca6-6f7811b80dd7">
 
 
