@@ -9,7 +9,7 @@ The app has a database of journeys made in May, June and July 2021. You can sear
 
 The backend is done using Node, Express and Javascript and the frontend is done with React.js.
 
-
+<img width="925" alt="image" src="https://github.com/kaisadia/City-bike-app/assets/122431979/d7e58b0b-a833-4b03-b2cf-1246a9048b0e">
 
 ## Cloud hosted app
 
@@ -91,10 +91,18 @@ To run the backend in Docker
 - Server side pagination on Stations and Trips pages as well as search results
 - Casing insensitive search for stations
 - Casing insensitive search for trips by departure station, return station and date 
+
+<img width="889" alt="image" src="https://github.com/kaisadia/City-bike-app/assets/122431979/2be83351-e474-451a-bdf2-cac5ffe9c1f3">
+
 - Single stations information: 
     - Total trips to and from
     - Average distance from and to station
     - Zoomable location on map 
+
+<img width="824" alt="image" src="https://github.com/kaisadia/City-bike-app/assets/122431979/edff34e2-5f55-4b18-be08-1de3bf25cea2">
+
+<img width="448" alt="image" src="https://github.com/kaisadia/City-bike-app/assets/122431979/29333eb5-139d-48d2-b19a-69ebe345aa68">
+
 
 
 ## Database
@@ -143,5 +151,4 @@ To run tests, run the following command
   npm test
 ```
 Backend API tests are done with Jest and Supertest, which are two libraries used for backend API testing. Jest is a JavaScript-based testing framework that lets you test both front-end and back-end applications, while SuperTest is a library for doing HTTP testing. Together, they allow for behavioral testing of the input and output of data without knowledge of the internal structure of the API.
-
 
