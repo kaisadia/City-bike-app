@@ -54,7 +54,7 @@ to build the frontend run
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file
+To run this project, you will need to add the following environment variables to your .env file in the backend:
 
 `PGUSER`
 
@@ -63,6 +63,10 @@ To run this project, you will need to add the following environment variables to
 `PGDATABASE`
 
 `PGPASSWORD`
+
+and to your frontend .env.local file:
+
+`REACT_APP_GOOGLE_MAPS_API_KEY`
 
 
 ## Run using Docker
