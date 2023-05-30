@@ -15,7 +15,7 @@ The backend is done using Node, Express and Javascript and the frontend is done 
 
 [Here](http://citybike-app.s3-website-us-east-1.amazonaws.com) is a link to the cloud hosted application. 
 
-The app is hosted on Amazon Web Services. The backend is on AWS Elastic Beanstalk. AWS Elastic Beanstalk is a service that makes it easy to deploy and manage web applications in the Amazon Web Services (AWS) cloud. It automates the details of capacity provisioning, load balancing, auto-scaling, and application deployment, creating an environment that runs a version of your application. 
+The app is hosted on Amazon Web Services. The backend runs on Elastic Beanstalk using Docker. AWS Elastic Beanstalk is a service that makes it easy to deploy and manage web applications in the Amazon Web Services (AWS) cloud. It automates the details of capacity provisioning, load balancing, auto-scaling, and application deployment, creating an environment that runs a version of your application. 
 The frontend of the application is stored in AWS S3 bucket. S3 is good for hosting frontends because it offers scalable and secure storage for static websites. 
 
 ## Run Locally
