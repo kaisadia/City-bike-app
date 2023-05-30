@@ -1,22 +1,11 @@
 import React from 'react';
-import { unmountComponentAtNode } from 'react-dom';
+import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import App from '../App';
 
-let container = null;
-beforeEach(() => {
-  container = document.createElement('div');
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
-});
 
 test('renders the landing page', () => {
-  render(<App />, container);
+  render(<App />);
   expect(screen.getByRole('heading')).toHaveTextContent(/Helsinki city bike data/);
   expect(screen.getByRole('banner')).toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'stations' })).not.toBeDisabled();

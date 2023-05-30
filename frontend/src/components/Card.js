@@ -19,15 +19,15 @@ function Card({ paginated }) {
       )}
       {!flipped && (
         <div className="back">
-          <p>
+          <div>
             Total trips to the station:
             <p className="number">{paginated.dep_station_count}</p>
-          </p>
-          <p>
+          </div>
+          <div>
             Total trips from the station:
             <p className="number">{paginated.ret_station_count}</p>
-          </p>
-          <p>
+          </div>
+          <div>
             Average distance departing from the station:
             <p className="number">
               {' '}
@@ -35,15 +35,15 @@ function Card({ paginated }) {
               {' '}
               km
             </p>
-          </p>
-          <p>
+          </div>
+          <div>
             Average distance returning to the station:
             <p className="number">
               {((paginated.avg_distance_ret) / 1000).toFixed(2)}
               {' '}
               km
             </p>
-          </p>
+          </div>
           <Map center={center} />
           <button className="button" type="button" onClick={clickHandler}>Less</button>
         </div>
