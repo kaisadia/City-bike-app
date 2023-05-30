@@ -72,6 +72,7 @@ and to your frontend .env.local file:
 ## Run using Docker
 
 The backend and frontend both consist of their own Docker-files. 
+[Here](https://hub.docker.com/repository/docker/kaisadia/citybikes-frontend/general) is a link to frontend in Dockerbub and [here](https://hub.docker.com/repository/docker/kaisadia/citybikes-backend/general) to backend. 
 
 To run the frontend in Docker
 
