@@ -154,7 +154,7 @@ To run tests, run the following command
 ```
 Backend API tests are done with Jest and Supertest, which are two libraries used for backend API testing. Jest is a JavaScript-based testing framework that lets you test both front-end and back-end applications, while SuperTest is a library for doing HTTP testing. Together, they allow for behavioral testing of the input and output of data without knowledge of the internal structure of the API.
 
-
+Frontend testing is done by using Jest and react-testing-library which come pre-packaged with React create app. 
 
 
 
