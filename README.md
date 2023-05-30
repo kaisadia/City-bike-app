@@ -156,5 +156,7 @@ Backend API tests are done with Jest and Supertest, which are two libraries used
 
 Frontend testing is done by using Jest and react-testing-library which come pre-packaged with React create app. 
 
+## Final reflections
 
+I thoroughly enjoyed creating this full-stack project. However, given more time, I would have added more functionalities and improved it. For instance, I would have created a CI/CD pipeline using GithubActions or AWS CodePipeline. Additionally, I am keen on enhancing my testing skills.
 
